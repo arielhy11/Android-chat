@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Android_chat</string>
+    <string name="sign_in">Sign in!</string>
+    <string name="good_to_see_you">Good to see you again!</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in_button">SIGN IN</string>
+    <string name="not_registered">Not registered?</string>
+    <string name="create_account_now">Create Account Now!</string>
+    <string name="register">Register</string>
+    <string name="come_join">Come join the fun!</string>
+    <string name="yourEmail">Your Email</string>
+    <string name="repeatPassword">Repeat password</string>
+    <string name="yourUsername">Your Username</string>
+    <string name="register_button">Register</string>
+    <string name="already_registered">Already registered?</string>
+    <string name="sign_in_now">Sign in Now!</string>
+    <string name="your_profilepic">Your ProfilePic</string>
+    <string name="your_profile_pic">Select \n profile pic</string>
 </resources>

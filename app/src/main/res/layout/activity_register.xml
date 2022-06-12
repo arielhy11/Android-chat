@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:overScrollMode="never"
+    android:padding="@dimen/_24sdp"
+    tools:context=".activities.RegisterActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:text="@string/register"
+            android:textColor="@color/primary"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:text="@string/come_join"
+            android:textColor="@color/primary"
+            android:textSize="@dimen/_14ssp" />
+
+        <EditText
+            android:id="@+id/inputEmail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:background="@drawable/background_input"
+            android:hint="@string/yourEmail"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="textEmailAddress"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
+            android:textColor="@color/primary"
+            android:textSize="@dimen/_13ssp"/>
+
+        <EditText
+            android:id="@+id/inputUsername"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/background_input"
+            android:hint="@string/yourUsername"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="textEmailAddress"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
+            android:textColor="@color/primary"
+            android:textSize="@dimen/_13ssp"/>
+
+        <EditText
+            android:id="@+id/inputPassword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/background_input"
+            android:hint="@string/password"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
+            android:textColor="@color/primary"
+            android:textSize="@dimen/_13ssp"/>
+
+        <EditText
+            android:id="@+id/inputRepeatPassword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/background_input"
+            android:hint="@string/repeatPassword"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
+            android:textColor="@color/primary"
+            android:textSize="@dimen/_13ssp"/>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/ProfilePic"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_gravity="center"
+                android:background="@drawable/register_image_bg"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/your_profile_pic"
+                android:textColor="@color/primary"/>
+        </FrameLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonRegister"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/register_button"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_18sdp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/AlreadyRegistered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="@string/already_registered"
+            android:textColor="@color/primary"
+            android:textStyle="bold"
+            android:textSize="@dimen/_10sdp"/>
+        <TextView
+            android:id="@+id/RegisterToLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_1sdp"
+            android:text="@string/sign_in_now"
+            android:textColor="@color/primary"
+            android:textStyle="bold"
+            android:textSize="@dimen/_18sdp"/>
+
+
+    </LinearLayout>
+</ScrollView>
