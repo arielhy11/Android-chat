@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="primary">#1C2E46</color>
     <color name="bg_input">#ECECEC</color>
+    <color name="bg_orange">#E41D1D</color>
+    <color name="bg_chatText">#FF3C3C</color>
+    <color name="bg_textMessage">#AA0F0F</color>
 </resources>
