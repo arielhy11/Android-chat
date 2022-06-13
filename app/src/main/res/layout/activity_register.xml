@@ -7,7 +7,7 @@
     android:clipToPadding="false"
     android:overScrollMode="never"
     android:padding="@dimen/_24sdp"
-    tools:context=".activities.RegisterActivity">
+    tools:context=".activities.activities.RegisterActivity">
 
 
     <LinearLayout
@@ -18,7 +18,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:text="@string/register"
             android:textColor="@color/primary"
             android:textSize="@dimen/_18ssp"
@@ -45,7 +45,7 @@
             android:paddingStart="@dimen/_16sdp"
             android:paddingEnd="@dimen/_16sdp"
             android:textColor="@color/primary"
-            android:textSize="@dimen/_13ssp"/>
+            android:textSize="@dimen/_13ssp" />
 
         <EditText
             android:id="@+id/inputUsername"
