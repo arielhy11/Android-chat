@@ -16,7 +16,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.android_chat.databinding.ActivityRegisterBinding;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -124,24 +123,10 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void register(){
         whileLoading(true);
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
         HashMap<String, Object> user = new HashMap<>();
         user.put("name", binding.inputUsername.getText().toString());
         user.put("email", binding.inputEmail.getText().toString());
         user.put("password", binding.inputPassword.getText().toString());
         user.put("image", rawImage);
-        database.collection("users").add(user).addOnSuccessListener(documentReference -> {
-            whileLoading(false);
-
-
-            maketext("Success");
-            Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-
-        }).addOnFailureListener(exception ->{
-            whileLoading(false);
-            maketext(exception.getMessage());
-        });
     }
 }
