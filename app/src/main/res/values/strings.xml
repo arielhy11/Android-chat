@@ -17,5 +17,7 @@
     <string name="sign_in_now">Sign in Now!</string>
     <string name="your_profilepic">Your ProfilePic</string>
     <string name="your_profile_pic">Select \n profile pic</string>
-    <string name="BaseUrl">http://10.0.2.2:5287/api/</string>
+    <string name="your_message_in_here">Your message in Here</string>
+    <string name="your_friends">Your Friends:</string>
+    <string name="new_contact_name">New Contact Name</string>
 </resources>

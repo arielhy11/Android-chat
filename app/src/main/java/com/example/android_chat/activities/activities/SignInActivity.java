@@ -1,49 +1,49 @@
 package com.example.android_chat.activities.activities;
 
-import android.content.SharedPreferences;
-import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.android_chat.R;
-import com.example.android_chat.activities.api.ContactAPI;
-import com.example.android_chat.activities.api.UserAPI;
-import com.example.android_chat.activities.entities.Contact;
-import com.example.android_chat.activities.entities.Message;
-import com.example.android_chat.activities.entities.User;
+import android.content.Intent;
+import android.os.Bundle;
+
+import com.example.android_chat.databinding.ActivitySignInBinding;
 
 public class SignInActivity extends AppCompatActivity {
+
+    private ActivitySignInBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
-
-        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref",MODE_PRIVATE);
-        SharedPreferences.Editor myEdit = sharedPreferences.edit();
-        myEdit.putString("id", null);
-        myEdit.putString("password", null);
-        myEdit.commit();
-
-        ContactAPI contactAPI = new ContactAPI();
-        UserAPI userAPI = new UserAPI();
-
-        // *** API TESTS ***
-
-        userAPI.get();
-        userAPI.addUser(new User("eli", "1111"));
-
-        contactAPI.get();
-        contactAPI.userGet(sharedPreferences.getString("id", "Ariel"));
-        contactAPI.userGetContact("Ariel", "Yosef");
-        contactAPI.userPost("eli", new Contact("avi", "ami", "2888"));
-        contactAPI.deleteContact("Ariel", "dad");
-        contactAPI.editContact("Ariel", "mom",
-                                new Contact("mom", "aaa", "1234"));
-        contactAPI.getMessages("Ariel", "Yosef");
-        contactAPI.sendMessage("eli", "avi", new Message("hello"));
-
+        binding = ActivitySignInBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        setListeners();
     }
 
-    //todo update the username in sharedpreferences when moving to contacts screen
+    private void setListeners(){
+        binding.loginToRegister.setOnClickListener(e ->
+                startActivity(new Intent(getApplicationContext(), RegisterActivity.class)));
+        binding.buttonSignIn.setOnClickListener(e->{
+                Intent intent = new Intent(getApplicationContext(), ChooseChat.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+        });
+        //THE CALL TO THE FUNCTION WRITTEN BELOW
+        //binding.buttonSignIn.setOnClickListener(e->uploadToFireStore());
+    }
+
+
+    // A function that, once called, would push data to the Firestore
+//    private void uploadToFireStore(){
+//        FirebaseFirestore database = FirebaseFirestore.getInstance();
+//        HashMap<String,Object> data = new HashMap<>();
+//        data.put("first Name:", "Yosef");
+//        database.collection("users")
+//                .add(data)
+//                .addOnSuccessListener(documentReference ->{
+//                    Toast.makeText(getApplicationContext(), "Data In", Toast.LENGTH_SHORT).show();
+//                })
+//                .addOnFailureListener(exception -> {
+//                    Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_SHORT).show();
+//                });
+//    }
 }

@@ -18,7 +18,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:text="@string/register"
             android:textColor="@color/primary"
             android:textSize="@dimen/_18ssp"
@@ -45,7 +45,7 @@
             android:paddingStart="@dimen/_16sdp"
             android:paddingEnd="@dimen/_16sdp"
             android:textColor="@color/primary"
-            android:textSize="@dimen/_13ssp"/>
+            android:textSize="@dimen/_13ssp" />
 
         <EditText
             android:id="@+id/inputUsername"
@@ -93,6 +93,7 @@
             android:textSize="@dimen/_13ssp"/>
 
         <FrameLayout
+            android:id="@+id/wrapProfilePic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp">
@@ -107,12 +108,19 @@
                 app:riv_oval="true"/>
 
             <TextView
+                android:id="@+id/ProfilePicText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/your_profile_pic"
-                android:textColor="@color/primary"/>
+                android:textColor="@color/primary" />
         </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:animateLayoutChanges="true">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonRegister"
@@ -124,6 +132,14 @@
             android:textSize="@dimen/_18sdp"
             android:textStyle="bold"
             />
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_gravity="center"
+                android:visibility="invisible"/>
+        </FrameLayout>
 
         <TextView
             android:id="@+id/AlreadyRegistered"
