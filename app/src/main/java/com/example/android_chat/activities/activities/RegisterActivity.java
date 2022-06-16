@@ -15,7 +15,6 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.android_chat.activities.firebase.utilities.ManagerPreferences;
 import com.example.android_chat.databinding.ActivityRegisterBinding;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -23,12 +22,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.HashMap;
-import java.util.prefs.PreferenceChangeEvent;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private ActivityRegisterBinding binding;
-    private ManagerPreferences managerPreferences;
     private String rawImage;
 
     @Override
@@ -36,7 +33,6 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityRegisterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        managerPreferences = new ManagerPreferences(getApplicationContext());
         setListeners();
     }
 
@@ -136,10 +132,7 @@ public class RegisterActivity extends AppCompatActivity {
         user.put("image", rawImage);
         database.collection("users").add(user).addOnSuccessListener(documentReference -> {
             whileLoading(false);
-            managerPreferences.putBoolean("isSignedIn", true);
-            managerPreferences.putString("userId", documentReference.getId());
-            managerPreferences.putString("name", binding.inputUsername.getText().toString());
-            managerPreferences.putString("image", rawImage);
+
 
             maketext("Success");
             Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
