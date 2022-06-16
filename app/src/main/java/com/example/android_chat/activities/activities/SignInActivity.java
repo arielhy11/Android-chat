@@ -23,7 +23,7 @@ public class SignInActivity extends AppCompatActivity {
         binding.loginToRegister.setOnClickListener(e ->
                 startActivity(new Intent(getApplicationContext(), RegisterActivity.class)));
         binding.buttonSignIn.setOnClickListener(e->{
-                Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ChooseChat.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
         });

@@ -4,17 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.android_chat.R;
-import com.example.android_chat.databinding.ActivityChatBinding;
+import com.example.android_chat.databinding.ActivityAddNewContactBinding;
 
-public class ChatActivity extends AppCompatActivity {
+public class AddNewContact extends AppCompatActivity {
 
-    private ActivityChatBinding binding;
+    private ActivityAddNewContactBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityChatBinding.inflate(getLayoutInflater());
+        binding = ActivityAddNewContactBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
     }
 }

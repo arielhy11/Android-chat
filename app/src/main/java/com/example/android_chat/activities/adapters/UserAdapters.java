@@ -20,6 +20,7 @@ public class UserAdapters extends RecyclerView.Adapter<UserAdapters.UserViewHold
     private final List<User> users;
 
     public UserAdapters(List<User> users) {
+        super();
         this.users = users;
     }
 
@@ -60,8 +61,8 @@ public class UserAdapters extends RecyclerView.Adapter<UserAdapters.UserViewHold
         }
 
         void setUser(User user){
-            binding.profilePic.setImageBitmap(getUserImage(user.image));
-            binding.textOfName.setText(user.name);
+//            binding.profilePic.setImageBitmap(getUserImage(user.getImage()));
+            binding.textOfName.setText(user.getName());
         }
 
     }
