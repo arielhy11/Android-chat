@@ -1,8 +1,8 @@
-package com.example.android_chat.activities;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.android_chat.activities.activities;
 
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.android_chat.R;
 
