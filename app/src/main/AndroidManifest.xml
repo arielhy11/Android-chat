@@ -23,6 +23,7 @@
             android:exported="false" />
         <activity
             android:name=".activities.activities.ChatActivity"
+            android:parentActivityName=".activities.activities.ChooseChat"
             android:exported="false" />
         <activity
             android:name=".activities.activities.SignInActivity"

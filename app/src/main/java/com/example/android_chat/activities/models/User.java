@@ -3,21 +3,23 @@ package com.example.android_chat.activities.models;
 import java.io.Serializable;
 
 public class User implements Serializable {
+    public int id = 0;
+    public static int lastId = 0;
     private String image;
-    private String email;
-    private String port;
+    private String nickName;
+    private String password;
     private String name;
 
     public String getImage() {
         return image;
     }
 
-    public String getEmail() {
-        return email;
+    public String getNickName() {
+        return nickName;
     }
 
-    public String getPort() {
-        return port;
+    public String getPassword() {
+        return password;
     }
 
 
@@ -34,12 +36,12 @@ public class User implements Serializable {
         this.image = image;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
-    public void setPort(String port) {
-        this.port = port;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 

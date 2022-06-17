@@ -27,38 +27,49 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.195" />
 
+
     <FrameLayout
-        android:id="@+id/wrapProfilePic"
+        android:id="@+id/new_contact_pic_frame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp">
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputName"
+        app:layout_constraintVertical_bias="0.22">
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/new_contact_pic"
+            android:layout_width="142dp"
+            android:layout_height="152dp"
+            android:layout_gravity="center"
+            android:background="@drawable/register_image_bg"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.509"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputName"
+            app:layout_constraintVertical_bias="0.22"
+            app:riv_oval="true" />
+        <TextView
+            android:id="@+id/ProfilePicText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/new_contact_pic"
+            android:textColor="@color/primary" />
     </FrameLayout>
 
-    <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/ProfilePic"
-        android:layout_width="@dimen/_80sdp"
-        android:layout_height="@dimen/_80sdp"
-        android:layout_gravity="center"
-        android:background="@drawable/register_image_bg"
-        android:scaleType="centerCrop"
+    <Button
+        android:id="@+id/submit_new_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputName"
-        app:riv_oval="true" />
-
-    <TextView
-        android:id="@+id/ProfilePicText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Friends pic"
-        android:textColor="@color/primary"
-        app:layout_constraintBottom_toBottomOf="@+id/ProfilePic"
-        app:layout_constraintEnd_toEndOf="@+id/ProfilePic"
-        app:layout_constraintStart_toStartOf="@+id/ProfilePic"
-        app:layout_constraintTop_toTopOf="@+id/ProfilePic" />
+        app:layout_constraintTop_toBottomOf="@+id/new_contact_pic_frame" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

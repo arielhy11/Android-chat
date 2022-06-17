@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -21,7 +22,7 @@ import java.util.List;
 public class ChooseChat extends AppCompatActivity {
 
     private ActivityChooseChatBinding binding;
-    private List<User> users;
+    private List<User> contacts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,26 +32,25 @@ public class ChooseChat extends AppCompatActivity {
 
         binding.usersRecycleview.setLayoutManager(new LinearLayoutManager(this));
 
-        users = new ArrayList<>();
+        contacts = new ArrayList<>();
 
         for (int i = 0; i < 5; i++){
             User user = new User();
             user.setName("User" + i);
-            users.add(user);
+            User.lastId++;
+            user.id = User.lastId;
+            contacts.add(user);
         }
+        binding.usersRecycleview.setAdapter(new UserAdapters(this, contacts));
+        setListeners();
+    }
 
-        binding.usersRecycleview.setAdapter(new UserAdapters(users));
+    private void setListeners() {
+        binding.addNewContact.setOnClickListener(e -> {
+            Intent intent = new Intent(getApplicationContext(), AddNewContact.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        });
     }
-    class UserViewHolder extends RecyclerView.ViewHolder{
-        private TextView name;
-        private ImageView image;
-        public UserViewHolder(ViewGroup container){
-            super(LayoutInflater.from(ChooseChat.this).inflate(R.layout.user_list_item, container, true));
-            name = itemView.findViewById(R.id.new_contact_name);
-            image = itemView.findViewById(R.id.new_contact_Pic);
-        }
-        public void bind(User user){
-            name.setText(user.getName());
-        }
-    }
+
 }
