@@ -1,17 +1,11 @@
 package com.example.android_chat.activities.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.example.android_chat.R;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.example.android_chat.activities.adapters.UserAdapters;
 import com.example.android_chat.activities.models.User;
 import com.example.android_chat.databinding.ActivityChooseChatBinding;
@@ -21,6 +15,8 @@ import java.util.List;
 
 public class ChooseChat extends AppCompatActivity {
 
+    /*ContactAPI contactAPI;
+    private SampleViewModel contactsList;*/
     private ActivityChooseChatBinding binding;
     private List<User> contacts;
 

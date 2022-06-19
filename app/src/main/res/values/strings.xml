@@ -21,5 +21,6 @@
     <string name="your_friends">Your Friends:</string>
     <string name="new_contact_name">New Contact Name</string>
     <string name="new_contact_pic">New contact Pic</string>
+    <string name="BaseUrl">http://10.0.2.2:5287/api/</string>
     <string name="submit">Submit</string>
 </resources>
