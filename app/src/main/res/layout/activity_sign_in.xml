@@ -92,5 +92,11 @@
             android:textStyle="bold"
             android:textSize="@dimen/_18sdp"/>
 
+       <!-- <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/lstUsers"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"/>-->
+
     </LinearLayout>
 </ScrollView>

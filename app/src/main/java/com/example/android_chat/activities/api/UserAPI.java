@@ -1,10 +1,9 @@
 package com.example.android_chat.activities.api;
 
-import androidx.lifecycle.MutableLiveData;
-
 import com.example.android_chat.R;
 import com.example.android_chat.activities.android_chat;
 import com.example.android_chat.activities.entities.User;
+import com.example.android_chat.activities.viewmodels.SampleViewModel;
 
 import java.util.List;
 
@@ -29,12 +28,12 @@ public class UserAPI {
     }
 
     // get request that return all users in the server
-    public void get(MutableLiveData<List<User>> users) {
+    public void get(SampleViewModel usersList) {
         Call<List<User>> call = webServiceAPI.getUsers();
         call.enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
-                users.setValue(response.body());
+                usersList.getUsers().setValue(response.body());
             }
 
             @Override
