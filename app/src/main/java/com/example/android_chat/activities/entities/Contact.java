@@ -5,11 +5,17 @@ import java.util.List;
 public class Contact {
 
     private String id;
+
     private String name;
+
     private String server;
+
     private String last;
+
     private String lastDate;
+
     private List<Message> messages;
+
     private String userName;
 
     public Contact(String id, String name, String server) {

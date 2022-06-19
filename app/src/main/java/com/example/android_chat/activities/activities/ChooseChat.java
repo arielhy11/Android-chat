@@ -1,18 +1,18 @@
 package com.example.android_chat.activities.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.android_chat.R;
 import com.example.android_chat.activities.adapters.UserAdapters;
-import com.example.android_chat.activities.models.User;
+import com.example.android_chat.activities.entities.User;
 import com.example.android_chat.databinding.ActivityChooseChatBinding;
 
 import java.util.ArrayList;
@@ -33,11 +33,11 @@ public class ChooseChat extends AppCompatActivity {
 
         users = new ArrayList<>();
 
-        for (int i = 0; i < 5; i++){
+        /*for (int i = 0; i < 5; i++){
             User user = new User();
             user.setName("User" + i);
             users.add(user);
-        }
+        }*/
 
         binding.usersRecycleview.setAdapter(new UserAdapters(users));
     }

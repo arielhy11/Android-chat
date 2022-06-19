@@ -33,6 +33,11 @@ android {
 
 dependencies {
 
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.14.9'
+
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -47,8 +52,8 @@ dependencies {
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
     //firebase
-    implementation 'com.google.firebase:firebase-messaging:23.0.5'
-    implementation 'com.google.firebase:firebase-firestore:24.1.2'
+    //implementation 'com.google.firebase:firebase-messaging:23.0.5'
+    //implementation 'com.google.firebase:firebase-firestore:24.1.2'
 
     //Allow MultiDex
     implementation 'androidx.multidex:multidex:2.0.1'

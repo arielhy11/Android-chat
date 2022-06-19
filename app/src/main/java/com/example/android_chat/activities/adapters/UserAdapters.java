@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.android_chat.activities.models.User;
+import com.example.android_chat.activities.entities.User;
 import com.example.android_chat.databinding.UserContainerBinding;
 
 import java.util.List;

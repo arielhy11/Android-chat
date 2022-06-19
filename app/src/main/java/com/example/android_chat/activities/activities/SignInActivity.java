@@ -1,25 +1,41 @@
 package com.example.android_chat.activities.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.MutableLiveData;
+
+import com.example.android_chat.activities.api.UserAPI;
+import com.example.android_chat.activities.entities.User;
 import com.example.android_chat.databinding.ActivitySignInBinding;
+
+import java.util.List;
 
 public class SignInActivity extends AppCompatActivity {
 
     private ActivitySignInBinding binding;
+    UserAPI userAPI;
+    MutableLiveData<List<User>> users;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        users = new MutableLiveData<List<User>>();
+        userAPI = new UserAPI();
+        userAPI.get(users);
         binding = ActivitySignInBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        setListeners();
+        //setListeners();
+
+        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref",MODE_PRIVATE);
+        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+        myEdit.putString("id", null);
+        myEdit.putString("password", null);
+        myEdit.commit();
     }
 
-    private void setListeners(){
+   /* private void setListeners(){
         binding.loginToRegister.setOnClickListener(e ->
                 startActivity(new Intent(getApplicationContext(), RegisterActivity.class)));
         binding.buttonSignIn.setOnClickListener(e->{
@@ -29,7 +45,7 @@ public class SignInActivity extends AppCompatActivity {
         });
         //THE CALL TO THE FUNCTION WRITTEN BELOW
         //binding.buttonSignIn.setOnClickListener(e->uploadToFireStore());
-    }
+    }*/
 
 
     // A function that, once called, would push data to the Firestore

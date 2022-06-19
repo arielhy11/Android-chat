@@ -6,6 +6,10 @@ public class User {
 
     private String password;
 
+    private String name;
+
+    private String profilePic;
+
     public User(String id, String password) {
         this.id = id;
         this.password = password;
@@ -25,5 +29,21 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
     }
 }
