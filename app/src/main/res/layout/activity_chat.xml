@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:background="@color/bg_orange"
     tools:context=".activities.activities.ChatActivity">
 
 
@@ -21,23 +20,25 @@
         android:src="@drawable/ic_settings"/>
 
     <TextView
+        android:id="@+id/contact_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="1"
         android:textColor="@color/white"
         android:textSize="@dimen/_15sdp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/settingsIcon"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:text="name"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecycler"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:orientation="vertical"
         android:overScrollMode="never"
@@ -45,7 +46,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/settingsIcon"
-        android:visibility="gone"/>
+        android:visibility="visible"/>
 
 
     <FrameLayout
@@ -66,17 +67,16 @@
             android:layout_marginStart="@dimen/_3sdp"
             android:padding="@dimen/_5sdp"
             android:src="@drawable/ic_send_icon"
-            android:background="@color/bg_orange"
             android:tint="@color/white"/>
     </FrameLayout>
 
     <EditText
+        android:id="@+id/inputMessage"
         android:layout_width="0dp"
         android:layout_height="@dimen/_55sdp"
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_10sdp"
-        android:background="@color/bg_chatText"
         android:hint="@string/your_message_in_here"
         android:textSize="@dimen/_15sdp"
         android:imeOptions="actionDone"
