@@ -7,15 +7,14 @@
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     tools:context=".activities.activities.ChooseChat"
-    android:background="@color/bg_orange">
-
+    >
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_new_contact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        app:backgroundTint="#E448B8"
+        app:backgroundTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_add"

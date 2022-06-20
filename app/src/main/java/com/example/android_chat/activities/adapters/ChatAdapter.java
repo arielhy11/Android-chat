@@ -12,9 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_chat.R;
-import com.example.android_chat.activities.models.Message;
-import com.example.android_chat.databinding.FriendMessageBinding;
-import com.example.android_chat.databinding.MyMessageBinding;
+import com.example.android_chat.activities.entities.Message;
 
 import java.util.List;
 
@@ -38,15 +36,15 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.SentMessageVie
     @Override
     public void onBindViewHolder(@NonNull SentMessageViewHolder holder, int position) {
         Message message = this.messages.get(position);
-        Log.d("recyclerview",message.getMessage());
-        if (message.isSender()) {
+        Log.d("recyclerview",message.getContent());
+        if (message.getSent()) {
             holder.friendLinear.setVisibility(View.GONE);
-            holder.myText.setText(message.getMessage());
-            holder.myTime.setText(message.getTime());
+            holder.myText.setText(message.getContent());
+            holder.myTime.setText(message.getCreated());
         } else {
             holder.myLinear.setVisibility(View.GONE);
-            holder.friendText.setText(message.getMessage());
-            holder.friendTime.setText(message.getTime());
+            holder.friendText.setText(message.getContent());
+            holder.friendTime.setText(message.getCreated());
         }
     }
 
@@ -74,11 +72,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.SentMessageVie
             friendText = view.findViewById(R.id.friendText);
             myTime = view.findViewById(R.id.my_time);
             friendTime = view.findViewById(R.id.friend_time);
-
         }
-
-
     }
-
-
 }

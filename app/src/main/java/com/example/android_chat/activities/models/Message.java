@@ -3,7 +3,7 @@ package com.example.android_chat.activities.models;
 import java.util.Date;
 
 public class Message {
-    private String message, time;//TODO change exactly to the same attribiutes in server
+    private String message, time;//TODO change exactly to the same attributes in server
     private Date dateObject;
     private boolean isSender;
 

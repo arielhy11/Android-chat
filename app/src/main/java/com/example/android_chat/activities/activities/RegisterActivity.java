@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
 
@@ -69,14 +68,13 @@ public class RegisterActivity extends AppCompatActivity {
     private void setListeners() {
         binding.RegisterToLogin.setOnClickListener(e -> onBackPressed());
         binding.buttonRegister.setOnClickListener(e -> {
-            register();
-            //todo move to chat screen only if the register is OK
-            Intent intent = new Intent(getApplicationContext(), ChooseChat.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            /*if (isLegal()) {
+            if (isLegal()) {
                 register();
-            }*/
+                //todo move to chat screen only if the register is OK
+                Intent intent = new Intent(getApplicationContext(), ChooseChat.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
         });
         binding.wrapProfilePic.setOnClickListener(e -> {
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -94,16 +92,10 @@ public class RegisterActivity extends AppCompatActivity {
         if (binding.inputUsername.getText().toString().trim().isEmpty()) {
             maketext("Username field can not be empty.");
             return false;
-        } else if (binding.inputEmail.getText().toString().trim().isEmpty()) {
-            maketext("Email field can not be empty.");
-            return false;
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(binding.inputEmail.getText().toString()).matches()) {
-            maketext("Email not valid.");
-            return false;
-        } else if (binding.inputPassword.getText().toString().trim().isEmpty()) {
+        }  else if (binding.inputPassword.getText().toString().trim().isEmpty()) {
             maketext("Password field can not be empty.");
             return false;
-        } else if (binding.inputRepeatPassword.getText().toString().trim().isEmpty()) {
+        } /*else if (binding.inputRepeatPassword.getText().toString().trim().isEmpty()) {
             maketext("Password field can not be empty.");
             return false;
         } else if (!binding.inputPassword.getText().toString().equals(binding.inputRepeatPassword.getText().toString())) {
@@ -112,7 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
         } else if (rawImage == null) { //TODO: should be possible to register with no image. I want to ask user if he's sure.
             maketext("pick your image");
             return false;
-        } else {
+        }*/ else {
             return true;
         }
     }
