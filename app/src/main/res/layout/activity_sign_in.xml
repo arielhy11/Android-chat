@@ -33,7 +33,7 @@
             android:textSize="@dimen/_14ssp" />
 
         <EditText
-            android:id="@+id/inputEmail"
+            android:id="@+id/inputName"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
             android:layout_marginTop="@dimen/_40sdp"
@@ -41,7 +41,7 @@
             android:hint="@string/email"
             android:imeOptions="actionNext"
             android:importantForAutofill="no"
-            android:inputType="textEmailAddress"
+            android:inputType="text"
             android:paddingStart="@dimen/_16sdp"
             android:paddingEnd="@dimen/_16sdp"
             android:textColor="@color/primary"
@@ -56,7 +56,7 @@
             android:hint="@string/password"
             android:imeOptions="actionNext"
             android:importantForAutofill="no"
-            android:inputType="textPassword"
+            android:inputType="text"
             android:paddingStart="@dimen/_16sdp"
             android:paddingEnd="@dimen/_16sdp"
             android:textColor="@color/primary"

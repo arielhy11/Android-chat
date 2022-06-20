@@ -1,6 +1,13 @@
 package com.example.android_chat.activities.entities;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class User {
+
+    @PrimaryKey(autoGenerate = true)
+    private int fakeId;
 
     private String id;
 
@@ -13,6 +20,21 @@ public class User {
     public User(String id, String password) {
         this.id = id;
         this.password = password;
+    }
+
+    /*public User(String id, String password, String name, String profilePic) {
+        this.id = id;
+        this.password = password;
+        this.name = name;
+        this.profilePic = profilePic;
+    }*/
+
+    public int getFakeId() {
+        return fakeId;
+    }
+
+    public void setFakeId(int fakeId) {
+        this.fakeId = fakeId;
     }
 
     public String getId() {

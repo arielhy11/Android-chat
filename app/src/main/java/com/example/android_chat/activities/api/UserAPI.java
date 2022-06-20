@@ -15,6 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class UserAPI {
 
+    boolean retValue = false;
     Retrofit retrofit;
     WebServiceAPI webServiceAPI;
 
@@ -28,18 +29,23 @@ public class UserAPI {
     }
 
     // get request that return all users in the server
-    public void get(SampleViewModel usersList) {
+    public boolean get(SampleViewModel usersList, String name, String password) {
         Call<List<User>> call = webServiceAPI.getUsers();
         call.enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 usersList.getUsers().setValue(response.body());
+                for(User i:usersList.getUsers().getValue()){
+                    if(name == i.getId() && password == i.getPassword()){
+                        retValue = true;
+                    }
+                }
             }
 
             @Override
             public void onFailure(Call<List<User>> call, Throwable t) {}
         });
-
+        return retValue;
     }
 
     public void addUser(User user) {

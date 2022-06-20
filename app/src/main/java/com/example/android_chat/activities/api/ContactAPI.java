@@ -4,6 +4,7 @@ import com.example.android_chat.R;
 import com.example.android_chat.activities.android_chat;
 import com.example.android_chat.activities.entities.Contact;
 import com.example.android_chat.activities.entities.Message;
+import com.example.android_chat.activities.viewmodels.SampleViewModel;
 
 import java.util.List;
 
@@ -28,12 +29,12 @@ public class ContactAPI {
     }
 
     // get list of all contacts in the server
-    public void get() {
+    public void get(SampleViewModel contactsList) {
         Call<List<Contact>> call = webServiceAPI.getContacts();
         call.enqueue(new Callback<List<Contact>>() {
             @Override
             public void onResponse(Call<List<Contact>> call, Response<List<Contact>> response) {
-                List<Contact> contacts = response.body();
+                contactsList.getContacts().setValue(response.body());
             }
 
             @Override
