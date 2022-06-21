@@ -11,7 +11,7 @@ import com.example.android_chat.activities.entities.User;
 import java.util.List;
 
 @Dao
-public interface UserDao {
+public interface UsersDao {
 
     @Query("SELECT * FROM user")
     List<User> index();

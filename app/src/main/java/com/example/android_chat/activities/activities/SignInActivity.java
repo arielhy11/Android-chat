@@ -6,14 +6,13 @@ import android.os.Bundle;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import com.example.android_chat.R;
 import com.example.android_chat.activities.android_chat;
 import com.example.android_chat.activities.api.WebServiceAPI;
 import com.example.android_chat.activities.entities.User;
 import com.example.android_chat.activities.room.AppDB;
-import com.example.android_chat.activities.room.UserDao;
+import com.example.android_chat.activities.room.UsersDao;
 import com.example.android_chat.databinding.ActivitySignInBinding;
 
 import java.util.ArrayList;
@@ -35,7 +34,7 @@ public class SignInActivity extends AppCompatActivity {
 
     //private SampleViewModel usersList;
     private AppDB db;
-    private UserDao userDao;
+    private UsersDao userDao;
     private ArrayList<User> users;
 
     private SharedPreferences sharedPreferences;
@@ -55,8 +54,8 @@ public class SignInActivity extends AppCompatActivity {
         webServiceAPI = retrofit.create(WebServiceAPI.class);
         users = new ArrayList<>();
 
-        db = Room.databaseBuilder(getApplicationContext(), AppDB.class, "UserDB").build();
-        userDao = db.userDao();
+        //db = Room.databaseBuilder(getApplicationContext(), AppDB.class, "UserDB").build();
+        //userDao = db.usersDao();
 
 
         sharedPreferences = getSharedPreferences("MySharedPref",MODE_PRIVATE);

@@ -3,6 +3,7 @@ package com.example.android_chat.activities.activities;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,6 +13,7 @@ import com.example.android_chat.activities.adapters.ChatAdapter;
 import com.example.android_chat.activities.android_chat;
 import com.example.android_chat.activities.api.WebServiceAPI;
 import com.example.android_chat.activities.entities.Message;
+import com.example.android_chat.activities.entities.Transfer;
 import com.example.android_chat.activities.entities.User;
 import com.example.android_chat.databinding.ActivityChatBinding;
 
@@ -55,11 +57,13 @@ public class ChatActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
         myEdit = sharedPreferences.edit();
 
-        //setListeners();
+        setListeners();
         //loadReceiverData();
         binding.chatRecycler.setLayoutManager(new LinearLayoutManager(this));
 
-        Call<List<Message>> call = webServiceAPI.getMessages(sharedPreferences.getString("id", "a"), "Yosef");
+        //todo insert the right contact name instead "Yosef" in the next line
+        Call<List<Message>> call = webServiceAPI.getMessages(sharedPreferences.getString("id", "a"),
+                sharedPreferences.getString("contactName", null));
         call.enqueue(new Callback<List<Message>>() {
             @Override
             public void onResponse(Call<List<Message>> call, Response<List<Message>> response) {
@@ -77,16 +81,40 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void sendMessage(){
-        //todo:send message
-        binding.inputMessage.setText(null);
+        EditText content = binding.inputMessage;
+        Call<Message> call = webServiceAPI.createMessage(sharedPreferences.getString("id", null),
+                                                         sharedPreferences.getString("contactName", null),
+                                                         new Message(content.getText().toString()));
+        call.enqueue(new Callback<Message>() {
+            @Override
+            public void onResponse(Call<Message> call, Response<Message> response) {
+                if (response.body() != null) {
+                    messages.add(response.body());
+                    chatAdapter = new ChatAdapter(messages,context);
+                    binding.chatRecycler.setAdapter(chatAdapter);
+                }
+            }
+            @Override
+            public void onFailure(Call<Message> call, Throwable t) {
+                //todo add alert that can't connect to the server
+            }
+        });
+
+        Call<Transfer> callTransfer = webServiceAPI.sendTransfer(new Transfer(
+                sharedPreferences.getString("id", null),
+                sharedPreferences.getString("contactName", null),
+                content.getText().toString()));
+        callTransfer.enqueue(new Callback<Transfer>() {
+            @Override
+            public void onResponse(Call<Transfer> call, Response<Transfer> response) {}
+            @Override
+            public void onFailure(Call<Transfer> call, Throwable t) {
+                //todo add alert that can't connect to the server
+            }
+        });
     }
 
     void setListeners(){
         binding.frameSend.setOnClickListener(e-> sendMessage());
-    }
-
-    void loadReceiverData(){
-        receiverUser = (User) getIntent().getSerializableExtra("user");
-//        binding.contactName.setText(receiverUser.getName());
     }
 }

@@ -128,7 +128,7 @@ public class ContactAPI {
         });
     }
 
-    // send new message between user and contact
+    /*// send new message between user and contact
     public void sendMessage(String username, String contactName, Message message) {
         Call<List<Message>> call = webServiceAPI.createMessage(username, contactName, message);
         call.enqueue(new Callback<List<Message>>() {
@@ -140,5 +140,5 @@ public class ContactAPI {
             @Override
             public void onFailure(Call<List<Message>> call, Throwable t) {}
         });
-    }
+    }*/
 }

@@ -7,12 +7,15 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.room.Room;
 
 import com.example.android_chat.R;
 import com.example.android_chat.activities.adapters.ContactsAdapters;
 import com.example.android_chat.activities.android_chat;
 import com.example.android_chat.activities.api.WebServiceAPI;
 import com.example.android_chat.activities.entities.Contact;
+import com.example.android_chat.activities.room.AppDB;
+import com.example.android_chat.activities.room.ContactsDao;
 import com.example.android_chat.databinding.ActivityChooseChatBinding;
 
 import java.util.ArrayList;
@@ -38,6 +41,9 @@ public class ChooseChat extends AppCompatActivity {
 
     private Context context = this;
 
+    AppDB db;
+    ContactsDao contactsDao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +62,30 @@ public class ChooseChat extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
         myEdit = sharedPreferences.edit();
 
+        db = Room.databaseBuilder(getApplicationContext(), AppDB.class, "ChatDB").build();
+        contactsDao = db.contactsDao();
+
+        /*Call<List<Contact>> call = webServiceAPI.getUserContacts(sharedPreferences.getString("id", "a"));
+        call.enqueue(new Callback<List<Contact>>() {
+            @Override
+            public void onResponse(Call<List<Contact>> call, Response<List<Contact>> response) {
+                if (response.body() != null) {
+                    contacts.addAll(response.body());
+                    binding.usersRecycleview.setAdapter(new ContactsAdapters(context, contacts));
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Contact>> call, Throwable t) {
+                //todo add alert that can't connect to the server
+            }
+        });*/
+        setListeners();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        contacts.clear();
         Call<List<Contact>> call = webServiceAPI.getUserContacts(sharedPreferences.getString("id", "a"));
         call.enqueue(new Callback<List<Contact>>() {
             @Override
@@ -70,7 +100,6 @@ public class ChooseChat extends AppCompatActivity {
                 //todo add alert that can't connect to the server
             }
         });
-        //setListeners();
     }
 
     private void setListeners() {

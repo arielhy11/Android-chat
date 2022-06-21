@@ -1,7 +1,9 @@
 package com.example.android_chat.activities.api;
 
 import com.example.android_chat.activities.entities.Contact;
+import com.example.android_chat.activities.entities.Invitation;
 import com.example.android_chat.activities.entities.Message;
+import com.example.android_chat.activities.entities.Transfer;
 import com.example.android_chat.activities.entities.User;
 
 import java.util.List;
@@ -56,7 +58,12 @@ public interface WebServiceAPI {
 
  // send new message between user and contact. "user" is username and "id" is the contact's name
  @POST("contacts/{user}/{id}/messages")
- Call<List<Message>> createMessage(@Path("user") String user, @Path("id") String id,
+ Call<Message> createMessage(@Path("user") String user, @Path("id") String id,
                                    @Body Message message);
 
+@POST("invitations")
+ Call<Invitation> sendInvitation(@Body Invitation invitation);
+
+ @POST("transfer")
+ Call<Transfer> sendTransfer(@Body Transfer transfer);
 }

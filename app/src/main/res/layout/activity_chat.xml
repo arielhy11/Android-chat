@@ -35,6 +35,7 @@
         tools:ignore="MissingConstraints"
         android:text="name"/>
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecycler"
         android:layout_width="match_parent"
@@ -43,11 +44,12 @@
         android:orientation="vertical"
         android:overScrollMode="never"
         android:padding="@dimen/_20sdp"
+        android:visibility="visible"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/settingsIcon"
-        android:visibility="visible"/>
-
+        app:layout_constraintVertical_bias="0.062"
+        tools:layout_editor_absoluteX="16dp" />
 
     <FrameLayout
         android:id="@+id/frameSend"

@@ -23,4 +23,5 @@
     <string name="new_contact_pic">New contact Pic</string>
     <string name="BaseUrl">http://10.0.2.2:5287/api/</string>
     <string name="submit">Submit</string>
+    <string name="new_contact_server">new contact server</string>
 </resources>
