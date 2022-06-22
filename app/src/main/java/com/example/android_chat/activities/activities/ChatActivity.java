@@ -1,7 +1,6 @@
 package com.example.android_chat.activities.activities;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -86,11 +85,6 @@ public class ChatActivity extends AppCompatActivity {
 
     void setListeners(){
         binding.frameSend.setOnClickListener(e-> sendMessage());
-        binding.settingsIcon.setOnClickListener(e->{
-            Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-        });
     }
 
     void loadReceiverData(){

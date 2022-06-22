@@ -17,7 +17,8 @@
         android:layout_marginTop="@dimen/_15sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_settings"/>
+        android:src="@drawable/ic_settings"
+        android:visibility="invisible"/>
 
     <TextView
         android:id="@+id/contact_name"
@@ -39,7 +40,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_350sdp"
         app:layout_constraintTop_toBottomOf="@id/settingsIcon"
-        app:layout_constraintBottom_toTopOf="@id/frameSend">
+        app:layout_constraintBottom_toTopOf="@id/frameSend"
+        android:layout_marginBottom="@dimen/_10sdp">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecycler"
         android:layout_width="match_parent"

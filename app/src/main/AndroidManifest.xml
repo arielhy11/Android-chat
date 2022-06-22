@@ -29,6 +29,7 @@
         <activity
             android:name=".activities.activities.ChatActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize"
             android:parentActivityName=".activities.activities.ChooseChat" />
         <activity
             android:name=".activities.activities.SignInActivity"
