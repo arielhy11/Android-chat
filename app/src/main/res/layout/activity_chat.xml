@@ -35,6 +35,11 @@
         tools:ignore="MissingConstraints"
         android:text="name"/>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_350sdp"
+        app:layout_constraintTop_toBottomOf="@id/settingsIcon"
+        app:layout_constraintBottom_toTopOf="@id/frameSend">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecycler"
         android:layout_width="match_parent"
@@ -45,8 +50,8 @@
         android:padding="@dimen/_20sdp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/settingsIcon"
-        android:visibility="visible"/>
+        android:visibility="visible" />
+    </RelativeLayout>
 
 
     <FrameLayout

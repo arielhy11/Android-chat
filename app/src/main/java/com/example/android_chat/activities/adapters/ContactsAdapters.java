@@ -45,6 +45,7 @@ public class ContactsAdapters extends RecyclerView.Adapter<com.example.android_c
         holder.userContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String sss = contacts.get(holder.getAdapterPosition()).getName();
                 Intent intent = new Intent(context, ChatActivity.class);
                 context.startActivity(intent);
             }

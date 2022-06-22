@@ -23,4 +23,6 @@
     <string name="new_contact_pic">New contact Pic</string>
     <string name="BaseUrl">http://10.0.2.2:5287/api/</string>
     <string name="submit">Submit</string>
+    <string name="enter_port_address">Enter Port Address</string>
+    <string name="confirm">Confirm</string>
 </resources>

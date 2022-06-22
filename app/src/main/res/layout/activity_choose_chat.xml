@@ -9,6 +9,16 @@
     tools:context=".activities.activities.ChooseChat"
     >
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/settingsIcon"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_settings"/>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_new_contact"
         android:layout_width="wrap_content"
@@ -23,10 +33,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/users_recycleview"
-        android:layout_width="409dp"
-        android:layout_height="657dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="394dp"
+        android:layout_height="579dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/settingsIcon" />
 </androidx.constraintlayout.widget.ConstraintLayout>

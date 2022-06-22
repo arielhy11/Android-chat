@@ -70,12 +70,17 @@ public class ChooseChat extends AppCompatActivity {
                 //todo add alert that can't connect to the server
             }
         });
-        //setListeners();
+        setListeners();
     }
 
     private void setListeners() {
         binding.addNewContact.setOnClickListener(e -> {
             Intent intent = new Intent(getApplicationContext(), AddNewContact.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        });
+        binding.settingsIcon.setOnClickListener(e -> {
+            Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         });
