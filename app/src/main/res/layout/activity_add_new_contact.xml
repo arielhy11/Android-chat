@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.activities.AddNewContact"
+    android:background="@color/bg_orange">
+
+
+    <EditText
+        android:id="@+id/inputName"
+        android:layout_width="275dp"
+        android:layout_height="63dp"
+        android:background="@drawable/background_input"
+        android:hint="@string/new_contact_name"
+        android:imeOptions="actionNext"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        android:paddingStart="@dimen/_16sdp"
+        android:paddingEnd="@dimen/_16sdp"
+        android:textColor="@color/primary"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.195" />
+
+
+    <!-- <FrameLayout
+         android:id="@+id/new_contact_pic_frame"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.509"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/inputName"
+         app:layout_constraintVertical_bias="0.22">
+         <com.makeramen.roundedimageview.RoundedImageView
+             android:id="@+id/new_contact_pic"
+             android:layout_width="142dp"
+             android:layout_height="152dp"
+             android:layout_gravity="center"
+             android:background="@drawable/register_image_bg"
+             android:scaleType="centerCrop"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintHorizontal_bias="0.509"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/inputName"
+             app:layout_constraintVertical_bias="0.22"
+             app:riv_oval="true" />
+         <TextView
+             android:id="@+id/ProfilePicText"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:text="@string/new_contact_pic"
+             android:textColor="@color/primary" />
+     </FrameLayout>-->
+
+    <EditText
+        android:id="@+id/inputServer"
+        android:layout_width="275dp"
+        android:layout_height="63dp"
+        android:background="@drawable/background_input"
+        android:hint="@string/new_contact_server"
+        android:imeOptions="actionNext"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        android:paddingStart="@dimen/_16sdp"
+        android:paddingEnd="@dimen/_16sdp"
+        android:textColor="@color/primary"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.348" />
+
+    <Button
+        android:id="@+id/submit_new_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputServer" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
