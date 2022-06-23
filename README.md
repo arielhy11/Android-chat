@@ -10,10 +10,10 @@
 תוכנת הלקוח נמצאת בכתובת https://github.com/Yosef-Perelman/react-api (זה זהה למה שהגשנו בחלק 2 אם זה רלוונטי). כדי להריץ אותה צריך לעשות clone 
 לרפוזיטורי לתוך פרויקט בvscode. אחרי שעושים clone, צריך בטרמינל לרשום את הפקודה cd react-api כדי להיכנס לתיקיה. 
 לאחר מכן יש לרשום את הפקודות הבאות:
-npm install
-npm install react-router-dom
-npm install react-bootstrap
-npm install @microsoft/signalr
+npm install</br>
+npm install react-router-dom</br>
+npm install react-bootstrap</br>
+npm install @microsoft/signalr</br>
 ואז npm start ותוכנת הלקוח תעלה. כעת ניתן להשתמש בה, והיא מסונכרנת עם השרת.
 
 הערות:
