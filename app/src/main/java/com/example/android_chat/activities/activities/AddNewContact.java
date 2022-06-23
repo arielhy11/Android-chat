@@ -64,7 +64,6 @@ public class AddNewContact extends AppCompatActivity {
             Contact newContact = new Contact(newName.getText().toString(),
                                              newName.getText().toString(), "5287",
                                              sharedPreferences.getString("id", "a"));
-            //contactsDao.insert(newContact);
 
             Call<Invitation> invitationCall = webServiceAPI.sendInvitation(new Invitation(
                     sharedPreferences.getString("id", null), newName.getText().toString(),
@@ -74,7 +73,7 @@ public class AddNewContact extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Invitation> invitationCall, Response<Invitation> response) {}
                 @Override
-                public void onFailure(Call<Invitation> invitationCall1, Throwable t) {}
+                public void onFailure(Call<Invitation> invitationCall, Throwable t) {}
                          });
 
             Call<Contact> call = webServiceAPI.postContact(sharedPreferences.getString("id", "a"), newContact);
@@ -89,7 +88,6 @@ public class AddNewContact extends AppCompatActivity {
                 }
                 @Override
                 public void onFailure(Call<Contact> call, Throwable t) {
-                    //todo add alert that can't connect to the server
                 }
             });
         });

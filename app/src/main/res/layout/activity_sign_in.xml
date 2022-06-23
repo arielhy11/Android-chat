@@ -7,7 +7,8 @@
     android:clipToPadding="false"
     android:overScrollMode="never"
     android:padding="@dimen/_24sdp"
-    tools:context=".activities.activities.SignInActivity">
+    tools:context=".activities.activities.SignInActivity"
+    android:background="@drawable/background">
 
 
     <LinearLayout
@@ -38,7 +39,7 @@
             android:layout_height="@dimen/_40sdp"
             android:layout_marginTop="@dimen/_40sdp"
             android:background="@drawable/background_input"
-            android:hint="@string/email"
+            android:hint="@string/name"
             android:imeOptions="actionNext"
             android:importantForAutofill="no"
             android:inputType="text"

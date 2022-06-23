@@ -14,12 +14,14 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import com.example.android_chat.R;
 import com.example.android_chat.activities.android_chat;
-import com.example.android_chat.activities.api.UserAPI;
 import com.example.android_chat.activities.api.WebServiceAPI;
 import com.example.android_chat.activities.entities.User;
+import com.example.android_chat.activities.room.AppDB;
+import com.example.android_chat.activities.room.ContactsDao;
 import com.example.android_chat.databinding.ActivityRegisterBinding;
 
 import java.io.ByteArrayOutputStream;
@@ -37,10 +39,10 @@ public class RegisterActivity extends AppCompatActivity {
 
     private WebServiceAPI webServiceAPI;
     private Retrofit retrofit;
-    private UserAPI userAPI;
 
+    AppDB db;
+    ContactsDao contactsDao;
     private ActivityRegisterBinding binding;
-    private String rawImage;
 
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor myEdit;
@@ -55,6 +57,9 @@ public class RegisterActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         webServiceAPI = retrofit.create(WebServiceAPI.class);
+
+        db = Room.databaseBuilder(getApplicationContext(), AppDB.class, "ChatDB").allowMainThreadQueries().build();
+        contactsDao = db.contactsDao();
 
         sharedPreferences = getSharedPreferences("MySharedPref",MODE_PRIVATE);
         myEdit = sharedPreferences.edit();
@@ -88,23 +93,13 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private Boolean isLegal() {
-        //case no username
         if (binding.inputUsername.getText().toString().trim().isEmpty()) {
             maketext("Username field can not be empty.");
             return false;
         }  else if (binding.inputPassword.getText().toString().trim().isEmpty()) {
             maketext("Password field can not be empty.");
             return false;
-        } /*else if (binding.inputRepeatPassword.getText().toString().trim().isEmpty()) {
-            maketext("Password field can not be empty.");
-            return false;
-        } else if (!binding.inputPassword.getText().toString().equals(binding.inputRepeatPassword.getText().toString())) {
-            maketext("Passwords do not match.");
-            return false;
-        } else if (rawImage == null) { //TODO: should be possible to register with no image. I want to ask user if he's sure.
-            maketext("pick your image");
-            return false;
-        }*/ else {
+        } else {
             return true;
         }
     }
@@ -140,7 +135,6 @@ public class RegisterActivity extends AppCompatActivity {
                             Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                             binding.ProfilePic.setImageBitmap(bitmap);
                             binding.ProfilePicText.setVisibility(View.GONE);
-                            rawImage = workRawImage(bitmap);
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
                         }
@@ -158,11 +152,12 @@ public class RegisterActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+                myEdit.putString("id", user.getId());
+                myEdit.apply();
             }
 
             @Override
             public void onFailure(Call<List<User>> call, Throwable t) {
-                //todo inform on no connectivity
             }
         });
     }

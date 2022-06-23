@@ -14,7 +14,6 @@ import com.example.android_chat.activities.android_chat;
 import com.example.android_chat.activities.api.WebServiceAPI;
 import com.example.android_chat.activities.entities.Message;
 import com.example.android_chat.activities.entities.Transfer;
-import com.example.android_chat.activities.entities.User;
 import com.example.android_chat.databinding.ActivityChatBinding;
 
 import java.util.ArrayList;
@@ -29,7 +28,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ChatActivity extends AppCompatActivity {
 
     private ActivityChatBinding binding;
-    private User receiverUser;
     private List<Message> messages;
     private ChatAdapter chatAdapter;
 
@@ -57,11 +55,14 @@ public class ChatActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
         myEdit = sharedPreferences.edit();
 
-        setListeners();
-        //loadReceiverData();
-        binding.chatRecycler.setLayoutManager(new LinearLayoutManager(this));
+        binding.contactName.setText(sharedPreferences.getString("contactName", null));
 
-        //todo insert the right contact name instead "Yosef" in the next line
+        setListeners();
+
+        LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this);
+        mLinearLayoutManager.setStackFromEnd(true);
+        binding.chatRecycler.setLayoutManager(mLinearLayoutManager);
+
         Call<List<Message>> call = webServiceAPI.getMessages(sharedPreferences.getString("id", "a"),
                 sharedPreferences.getString("contactName", null));
         call.enqueue(new Callback<List<Message>>() {
@@ -75,7 +76,6 @@ public class ChatActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<List<Message>> call, Throwable t) {
-                //todo add alert that can't connect to the server
             }
         });
     }
@@ -92,11 +92,11 @@ public class ChatActivity extends AppCompatActivity {
                     messages.add(response.body());
                     chatAdapter = new ChatAdapter(messages,context);
                     binding.chatRecycler.setAdapter(chatAdapter);
+                    binding.inputMessage.getText().clear();
                 }
             }
             @Override
             public void onFailure(Call<Message> call, Throwable t) {
-                //todo add alert that can't connect to the server
             }
         });
 
@@ -109,7 +109,6 @@ public class ChatActivity extends AppCompatActivity {
             public void onResponse(Call<Transfer> call, Response<Transfer> response) {}
             @Override
             public void onFailure(Call<Transfer> call, Throwable t) {
-                //todo add alert that can't connect to the server
             }
         });
     }

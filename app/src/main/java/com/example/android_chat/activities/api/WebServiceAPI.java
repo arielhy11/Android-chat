@@ -66,4 +66,7 @@ public interface WebServiceAPI {
 
  @POST("transfer")
  Call<Transfer> sendTransfer(@Body Transfer transfer);
+
+ @POST("invitations/{user}/{token}")
+ Call<String> sendToken(@Path("user") String user, @Path("token") String token);
 }

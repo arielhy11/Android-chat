@@ -6,8 +6,6 @@
     android:padding="@dimen/_8sdp"
     android:id="@+id/userContainer">
 
-    
-    
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/profilePic"
         android:layout_width="@dimen/_30sdp"
@@ -15,15 +13,17 @@
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:riv_oval="true"/>
+        app:riv_oval="true"
+        />
 
     <View
         android:id="@+id/profilePicView"
-        android:layout_width="1dp"
+        android:layout_width="2dp"
         android:layout_height="1dp"
         app:layout_constraintBottom_toBottomOf="@id/profilePic"
+        android:background="@drawable/face"
         app:layout_constraintStart_toEndOf="@id/profilePic"
-        app:layout_constraintTop_toTopOf="@id/profilePic"/>
+        app:layout_constraintTop_toTopOf="@id/profilePic" />
 
     <TextView
         android:id="@+id/textOfName"
@@ -32,6 +32,7 @@
         android:layout_marginEnd="@dimen/_10sdp"
         android:layout_marginStart="@dimen/_10sdp"
         android:ellipsize="end"
+        android:textStyle="bold"
         android:maxLines="1"
         android:textSize="@dimen/_15sdp"
         app:layout_constraintBottom_toTopOf="@id/profilePicView"

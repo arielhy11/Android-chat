@@ -6,7 +6,7 @@
     <string name="password">Password</string>
     <string name="sign_in_button">SIGN IN</string>
     <string name="not_registered">Not registered?</string>
-    <string name="create_account_now">Create Account Now!</string>
+    <string name="create_account_now">Create Account <b><u>Here</u></b>!</string>
     <string name="register">Register</string>
     <string name="come_join">Come join the fun!</string>
     <string name="yourEmail">Your Email</string>
@@ -14,7 +14,7 @@
     <string name="yourUsername">Your Username</string>
     <string name="register_button">Register</string>
     <string name="already_registered">Already registered?</string>
-    <string name="sign_in_now">Sign in Now!</string>
+    <string name="sign_in_now">Sign in <b><u>Here</u></b>!</string>
     <string name="your_profilepic">Your ProfilePic</string>
     <string name="your_profile_pic">Select \n profile pic</string>
     <string name="your_message_in_here">Your message in Here</string>
@@ -24,4 +24,6 @@
     <string name="BaseUrl">http://10.0.2.2:5287/api/</string>
     <string name="submit">Submit</string>
     <string name="new_contact_server">new contact server</string>
+    <string name="new_server">Enter New Server</string>
+    <string name="name">Name</string>
 </resources>

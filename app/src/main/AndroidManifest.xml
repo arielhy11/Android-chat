@@ -4,6 +4,7 @@
     package="com.example.android_chat">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:name=".activities.android_chat"
@@ -15,19 +16,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_chat"
-        tools:targetApi="31"
         android:usesCleartextTraffic="true"
-        >
+        tools:targetApi="31">
+
+        <service
+            android:name=".activities.MyService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
         <activity
             android:name=".activities.activities.AddNewContact"
+            android:exported="false" />
+        <activity
+            android:name=".activities.activities.SettingsActivity"
             android:exported="false" />
         <activity
             android:name=".activities.activities.ChooseChat"
             android:exported="false" />
         <activity
             android:name=".activities.activities.ChatActivity"
-            android:parentActivityName=".activities.activities.ChooseChat"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".activities.activities.ChooseChat" />
         <activity
             android:name=".activities.activities.SignInActivity"
             android:exported="true"

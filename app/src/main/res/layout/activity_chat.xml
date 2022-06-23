@@ -6,10 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    tools:context=".activities.activities.ChatActivity">
+    tools:context=".activities.activities.ChatActivity"
+    android:background="@drawable/background">
 
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <!--<androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/settingsIcon"
         android:layout_width="@dimen/_25sdp"
         android:layout_height="@dimen/_25sdp"
@@ -17,30 +18,33 @@
         android:layout_marginTop="@dimen/_15sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_settings"/>
+        android:src="@drawable/ic_settings"/>-->
+
 
     <TextView
         android:id="@+id/contact_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_15ssp"
+        android:layout_marginStart="20dp"
         android:ellipsize="end"
-        android:gravity="center"
         android:maxLines="1"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_15sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_30sdp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/settingsIcon"
+        app:layout_constraintHorizontal_bias="0.589"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
         tools:ignore="MissingConstraints"
-        android:text="name"/>
-
+        tools:layout_editor_absoluteY="43dp" />
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_350sdp"
-        app:layout_constraintTop_toBottomOf="@id/settingsIcon"
-        app:layout_constraintBottom_toTopOf="@id/frameSend">
+        app:layout_constraintBottom_toTopOf="@id/frameSend"
+        app:layout_constraintTop_toTopOf="@+id/contact_name">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/chatRecycler"
             android:layout_width="match_parent"
@@ -49,9 +53,10 @@
             android:orientation="vertical"
             android:overScrollMode="never"
             android:padding="@dimen/_20sdp"
+            android:visibility="visible"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:visibility="visible" />
+            app:layout_constraintBottom_toBottomOf="parent" />
+
     </RelativeLayout>
 
     <FrameLayout
@@ -94,5 +99,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/frameSend"
         app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="94dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/usericon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
