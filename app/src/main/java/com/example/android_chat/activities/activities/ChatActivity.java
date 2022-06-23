@@ -81,36 +81,43 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void sendMessage(){
-        EditText content = binding.inputMessage;
-        Call<Message> call = webServiceAPI.createMessage(sharedPreferences.getString("id", null),
-                                                         sharedPreferences.getString("contactName", null),
-                                                         new Message(content.getText().toString()));
-        call.enqueue(new Callback<Message>() {
-            @Override
-            public void onResponse(Call<Message> call, Response<Message> response) {
-                if (response.body() != null) {
-                    messages.add(response.body());
-                    chatAdapter = new ChatAdapter(messages,context);
-                    binding.chatRecycler.setAdapter(chatAdapter);
-                    binding.inputMessage.getText().clear();
-                }
-            }
-            @Override
-            public void onFailure(Call<Message> call, Throwable t) {
-            }
-        });
+        if (binding.inputMessage.getText().toString().equals("")){
 
-        Call<Transfer> callTransfer = webServiceAPI.sendTransfer(new Transfer(
-                sharedPreferences.getString("id", null),
-                sharedPreferences.getString("contactName", null),
-                content.getText().toString()));
-        callTransfer.enqueue(new Callback<Transfer>() {
-            @Override
-            public void onResponse(Call<Transfer> call, Response<Transfer> response) {}
-            @Override
-            public void onFailure(Call<Transfer> call, Throwable t) {
-            }
-        });
+        }else {
+            EditText content = binding.inputMessage;
+            Call<Message> call = webServiceAPI.createMessage(sharedPreferences.getString("id", null),
+                    sharedPreferences.getString("contactName", null),
+                    new Message(content.getText().toString()));
+            call.enqueue(new Callback<Message>() {
+                @Override
+                public void onResponse(Call<Message> call, Response<Message> response) {
+                    if (response.body() != null) {
+                        messages.add(response.body());
+                        chatAdapter = new ChatAdapter(messages, context);
+                        binding.chatRecycler.setAdapter(chatAdapter);
+                        binding.inputMessage.getText().clear();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Message> call, Throwable t) {
+                }
+            });
+
+            Call<Transfer> callTransfer = webServiceAPI.sendTransfer(new Transfer(
+                    sharedPreferences.getString("id", null),
+                    sharedPreferences.getString("contactName", null),
+                    content.getText().toString()));
+            callTransfer.enqueue(new Callback<Transfer>() {
+                @Override
+                public void onResponse(Call<Transfer> call, Response<Transfer> response) {
+                }
+
+                @Override
+                public void onFailure(Call<Transfer> call, Throwable t) {
+                }
+            });
+        }
     }
 
     void setListeners(){

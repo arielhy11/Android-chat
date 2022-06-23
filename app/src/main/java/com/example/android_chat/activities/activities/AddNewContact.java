@@ -60,36 +60,42 @@ public class AddNewContact extends AppCompatActivity {
 
     private void setListeners() {
         binding.submitNewContact.setOnClickListener(e -> {
-            EditText newName = binding.inputName;
-            Contact newContact = new Contact(newName.getText().toString(),
-                                             newName.getText().toString(), "5287",
-                                             sharedPreferences.getString("id", "a"));
+            if (!binding.inputName.getText().toString().equals("") && !binding.inputServer.getText().toString().equals("")) {
+                EditText newName = binding.inputName;
+                Contact newContact = new Contact(newName.getText().toString(),
+                        newName.getText().toString(), "5287",
+                        sharedPreferences.getString("id", "a"));
 
-            Call<Invitation> invitationCall = webServiceAPI.sendInvitation(new Invitation(
-                    sharedPreferences.getString("id", null), newName.getText().toString(),
-                    sharedPreferences.getString("server", "5287")
-            ));
-            invitationCall.enqueue(new Callback<Invitation>() {
-                @Override
-                public void onResponse(Call<Invitation> invitationCall, Response<Invitation> response) {}
-                @Override
-                public void onFailure(Call<Invitation> invitationCall, Throwable t) {}
-                         });
-
-            Call<Contact> call = webServiceAPI.postContact(sharedPreferences.getString("id", "a"), newContact);
-            call.enqueue(new Callback<Contact>() {
-                @Override
-                public void onResponse(Call<Contact> call, Response<Contact> response) {
-                    if (response.body() != null) {
-                        Intent intent = new Intent(getApplicationContext(), ChooseChat.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
+                Call<Invitation> invitationCall = webServiceAPI.sendInvitation(new Invitation(
+                        sharedPreferences.getString("id", null), newName.getText().toString(),
+                        sharedPreferences.getString("server", "5287")
+                ));
+                invitationCall.enqueue(new Callback<Invitation>() {
+                    @Override
+                    public void onResponse(Call<Invitation> invitationCall, Response<Invitation> response) {
                     }
-                }
-                @Override
-                public void onFailure(Call<Contact> call, Throwable t) {
-                }
-            });
+
+                    @Override
+                    public void onFailure(Call<Invitation> invitationCall, Throwable t) {
+                    }
+                });
+
+                Call<Contact> call = webServiceAPI.postContact(sharedPreferences.getString("id", "a"), newContact);
+                call.enqueue(new Callback<Contact>() {
+                    @Override
+                    public void onResponse(Call<Contact> call, Response<Contact> response) {
+                        if (response.body() != null) {
+                            Intent intent = new Intent(getApplicationContext(), ChooseChat.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Contact> call, Throwable t) {
+                    }
+                });
+            }
         });
     }
 }
